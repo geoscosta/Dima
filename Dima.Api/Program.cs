@@ -1,0 +1,55 @@
+using Dima.Core.Enums;
+using Dima.Core.Models;
+using Microsoft.AspNetCore.Mvc;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+app.MapPost(
+    "/v1/transactions", 
+    (Request request, Handler handler) => handler.Handle(request)).Produces<Response>();
+
+app.Run();
+
+// Request
+public class Request
+{
+    public string Title { get; set; } = string.Empty;
+    public DateTime CreatedAt { get; set; } = DateTime.Now;
+    public ETransactionType TypeTransaction { get; set; } = ETransactionType.Withdraw;
+    public decimal Amount { get; set; }
+    public long CategoryId { get; set; }
+    public string UserId { get; set; }  =  string.Empty;
+}
+
+// Response
+public class Response
+{
+    public long Id { get; set; }
+    public string Title { get; set; } = string.Empty;
+    // public DateTime CreatedAt { get; set; }
+    // public DateTime? PaidOrReceivedAt { get; set; }
+    // public ETransactionType TypeTransaction { get; set; }
+    // public decimal Amount { get; set; }
+    // public long CategoryId { get; set; }
+    // public Category Category { get; set; } = null!;
+    // public string UserId { get; set; }  =  string.Empty;
+}
+
+// Handler
+public class Handler
+{
+    public Response Handle(Request req)
+    {
+        return new Response
+        {
+            Id = 4,
+            Title = req.Title,
+        };
+    }
+    
+}
