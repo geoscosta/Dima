@@ -28,7 +28,7 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.MapPost(
-    "/v1/transactions", 
+    "/v1/categories", 
     (Request request, Handler handler) => handler.Handle(request)).Produces<Response>();
 
 app.Run();
@@ -37,11 +37,12 @@ app.Run();
 public class Request
 {
     public string Title { get; set; } = string.Empty;
-    public DateTime CreatedAt { get; set; } = DateTime.Now;
-    public ETransactionType TypeTransaction { get; set; } = ETransactionType.Withdraw;
-    public decimal Amount { get; set; }
-    public long CategoryId { get; set; }
-    public string UserId { get; set; }  =  string.Empty;
+    public string Description { get; set; } = string.Empty;
+    // public DateTime CreatedAt { get; set; } = DateTime.Now;
+    // public ETransactionType TypeTransaction { get; set; } = ETransactionType.Withdraw;
+    // public decimal Amount { get; set; }
+    // public long CategoryId { get; set; }
+    // public string UserId { get; set; }  =  string.Empty;
 }
 
 // Response
@@ -59,14 +60,23 @@ public class Response
 }
 
 // Handler
-public class Handler
+public class Handler(AppDbContext context)
 {
     public Response Handle(Request req)
     {
+        var category = new Category
+        {
+            Title = req.Title,
+            Description = req.Description
+        };
+        
+        context.Categories.Add(category);
+        context.SaveChanges();
+        
         return new Response
         {
-            Id = 4,
-            Title = req.Title,
+            Id = category.Id,
+            Title = category.Title,
         };
     }
     
