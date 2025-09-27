@@ -8,7 +8,7 @@ public class PagedResponse<TData> : Response<TData>
     public PagedResponse(
         TData? data, 
         int totalCount, 
-        int currentPage, 
+        int currentPage = 1, 
         int pageSize = Configuration.DefaultPageSize)
         : base(data)
     {
