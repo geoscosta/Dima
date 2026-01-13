@@ -8,6 +8,7 @@ C:\Labs\Dima\Dima.Api\bin\Debug\net8.0\Dima.Api.pdb
 C:\Labs\Dima\Dima.Api\bin\Debug\net8.0\Azure.Core.dll
 C:\Labs\Dima\Dima.Api\bin\Debug\net8.0\Azure.Identity.dll
 C:\Labs\Dima\Dima.Api\bin\Debug\net8.0\Humanizer.dll
+C:\Labs\Dima\Dima.Api\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Labs\Dima\Dima.Api\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Labs\Dima\Dima.Api\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Labs\Dima\Dima.Api\bin\Debug\net8.0\Microsoft.Build.Locator.dll
